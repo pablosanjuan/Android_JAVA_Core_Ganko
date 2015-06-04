@@ -5,8 +5,10 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
+import android.media.MediaScannerConnection.MediaScannerConnectionClient;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.view.ContextMenu;
@@ -28,7 +30,7 @@ public class IngresarBovino extends ActionBarActivity implements View.OnClickLis
     private String var_genero="";
     private String var_fecha="";
     private EditText e_id, e_nomb;
-    String[] bovino;
+    private String[] bovino;
     int eleccion;
     private Calendar calendar;
     private int year, month, day;
@@ -36,24 +38,25 @@ public class IngresarBovino extends ActionBarActivity implements View.OnClickLis
     private ImageButton imgbtn;
     private String name2 = "";
     private String foto_rq;
+    private String name = "";
+    private String imagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ingresar_bovino);
 
-
         e_id = (EditText) findViewById(R.id.edt_id_bovino);
         e_nomb = (EditText) findViewById(R.id.edt_nombre_bovino);
         btn_fecha = (Button) findViewById(R.id.btn_fecha);
         rdgGrupo = (RadioGroup) findViewById(R.id.rdgGrupo);
         imgbtn = (ImageButton) findViewById(R.id.foto_bovino);
-
-        rdgGrupo.setOnCheckedChangeListener(this);
+        imagen = Uri.parse("android.resource://com.example.pablosanjuan/core/drawable/add").toString();
+        colocarImagen();
         registerForContextMenu(imgbtn);
+        rdgGrupo.setOnCheckedChangeListener(this);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
-
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
     }
@@ -72,16 +75,17 @@ public class IngresarBovino extends ActionBarActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_siguiente:
-                if(validar(e_id.getText().toString(),e_nomb.getText().toString(),var_fecha,var_genero)==false){
-                    Toast.makeText(this,"Debe Llenar Todos Los Campos",Toast.LENGTH_LONG).show();
+                if(validar(e_id.getText().toString(),e_nomb.getText().toString(),var_fecha,var_genero, name2)==false){
+                    Toast.makeText(this,"Debe Llenar Todos Los Campos y Elegir una Foto",Toast.LENGTH_LONG).show();
                 }else {
-                    bovino = new String[4];
+                    bovino = new String[5];
                     Intent ir_reg = new Intent(this, IngresarBovino2.class);
 
                         bovino[0] = e_id.getText().toString();
-                        bovino[1] = e_nomb.getText().toString();
-                        bovino[2] = var_fecha;
-                        bovino[3] = var_genero;
+                        bovino[1] = name2;
+                        bovino[2] = e_nomb.getText().toString();
+                        bovino[3] = var_fecha;
+                        bovino[4] = var_genero;
 
                     ir_reg.putExtra("bovino", bovino);
                     startActivity(ir_reg);
@@ -121,11 +125,11 @@ public class IngresarBovino extends ActionBarActivity implements View.OnClickLis
     private void showDate(int year, int month, int day) {
         var_fecha = (new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year)).toString();
-        btn_fecha.setText("Fecha Nacimiento: " + var_fecha);
+        btn_fecha.setText(var_fecha);
     }
 
-    public Boolean validar(String id, String nombre, String fecha, String genero) {
-        if (id.equals("") || nombre.equals("") || fecha.equals("") || genero.equals("")) {
+    public Boolean validar(String id, String nombre, String fecha, String genero, String name2) {
+        if (id.equals("") || nombre.equals("") || fecha.equals("") || genero.equals("") || name2.equals("")) {
             return false;
         }else {
             return true;
@@ -139,7 +143,7 @@ public class IngresarBovino extends ActionBarActivity implements View.OnClickLis
 
             case R.id.nueva_foto:
                 Intent intent_foto =  new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                Uri output = Uri.fromFile(new File(name2));
+                Uri output = Uri.fromFile(new File(name));
                 intent_foto.putExtra(MediaStore.EXTRA_OUTPUT, output);
                 eleccion = 1;
                 startActivityForResult(intent_foto, eleccion);
@@ -154,33 +158,36 @@ public class IngresarBovino extends ActionBarActivity implements View.OnClickLis
                 return super.onContextItemSelected(item);
         }
     }
-
+    private void colocarImagen() {
+        name = imagen;
+        imgbtn.setImageURI(Uri.parse(imagen));
+    }
+    @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
-                                   ContextMenu.ContextMenuInfo menuInfo) {
+                                    ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-//			name2 = Environment.getExternalStorageDirectory() + "/test.jpg";
-        getMenuInflater().inflate(R.menu.menu_foto_perfil, menu);
+            String nombre_foto = "/ModBovino/" + e_nomb.getText().toString() + e_id.getText().toString() + ".jpg";
+            name = Environment.getExternalStorageDirectory().getPath() + nombre_foto;
+            getMenuInflater().inflate(R.menu.menu_foto_perfil, menu);
     }
 
     @Override protected void onActivityResult(int requestCode,  int resultCode, Intent data) {
-        if (requestCode == 1) {
-            foto_rq = name2;
-            imgbtn.setImageBitmap(BitmapFactory.decodeFile(foto_rq));
 
-            new MediaScannerConnection.MediaScannerConnectionClient() {
+        if (requestCode == 1) {
+            imgbtn.setImageBitmap(BitmapFactory.decodeFile(name));
+
+            new MediaScannerConnectionClient() {
                 private MediaScannerConnection msc = null; {
                     msc = new MediaScannerConnection(getApplicationContext(), this); msc.connect();
                 }
                 public void onMediaScannerConnected() {
-                    msc.scanFile(foto_rq, null);
+                    msc.scanFile(name, null);
                 }
                 public void onScanCompleted(String path, Uri uri) {
                     msc.disconnect();
                 }
             };
-
-            name2 = foto_rq;
-
+            name2 = name;
         }else if (requestCode == 2){
             if(data == null){
                 Toast.makeText(getApplicationContext()	,"No se eligio la foto!", Toast.LENGTH_SHORT).show();

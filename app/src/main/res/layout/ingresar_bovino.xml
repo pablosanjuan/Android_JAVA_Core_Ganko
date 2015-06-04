@@ -15,8 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <ImageButton
+        android:src="@drawable/add"
         android:id="@+id/foto_bovino"
-        android:src="@drawable/vaca_logo"
         android:layout_width="200dp"
         android:layout_height="200dp" />
 
@@ -40,11 +40,15 @@
             android:hint="Nombre"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha de Nacimiento:"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_fecha"
-            android:text="Fecha De Nacimiento"
+            android:text="DD/MM/AAAA"
             android:onClick="onClick"
             android:gravity="left|center_vertical"
             style="@style/Base.Widget.AppCompat.ActionButton.Overflow"

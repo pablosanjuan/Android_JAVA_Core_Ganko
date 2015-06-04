@@ -5,6 +5,7 @@ package com.example.pablosanjuan.core.vo;
  */
 public class InventarioVO {
     private String Id;
+    private String Foto;
     private String Nombre;
     private String Fecha;
     private String Genero;
@@ -21,6 +22,14 @@ public class InventarioVO {
 
     public void setId(String id) {
         Id = id;
+    }
+
+    public String getFoto() {
+        return Foto;
+    }
+
+    public void setFoto(String foto) {
+        Foto = foto;
     }
 
     public String getNombre() {

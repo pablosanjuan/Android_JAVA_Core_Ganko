@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbHelper extends SQLiteOpenHelper{
 
-	private static final String DB_NAME = "Bov.sqlite";
+	private static final String DB_NAME = "dbbov.sqlite";
 	private static final int DB_VERSION = 1;
 	
 	public DbHelper(Context context) {

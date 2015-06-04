@@ -14,8 +14,9 @@ import java.util.List;
 public class DbManager_inventario {
 
 	public static final String TABLE_NAME = "Inventario";
-	public static final String  ID = "_id";
-    public static final String  ID_BOVINO = "IdBovino";
+	public static final String ID = "_id";
+    public static final String ID_BOVINO = "IdBovino";
+    public static final String FOTO = "Foto";
     public static final String NOMBRE = "Nombre";
 	public static final String FECHA = "Fecha";
 	public static final String GENERO = "Genero";
@@ -29,6 +30,7 @@ public class DbManager_inventario {
 	public static final String CREATE_TABLE = "create table " +TABLE_NAME+ " ("
             + ID + " integer primary key autoincrement,"
             + ID_BOVINO + " text not null,"
+            + FOTO + " text not null,"
 			+ NOMBRE + " text not null,"
 			+ FECHA + " text not null,"
 			+ GENERO + " text not null,"
@@ -48,9 +50,10 @@ public class DbManager_inventario {
 		db = helper.getWritableDatabase();
 	}
 	
-	public ContentValues generarContentValues (String id, String nombre, String fecha, String genero, String proposito, String peso, String color, String raza, String id_padre, String id_madre){
+	public ContentValues generarContentValues (String id,String foto, String nombre, String fecha, String genero, String proposito, String peso, String color, String raza, String id_padre, String id_madre){
 		ContentValues valores = new ContentValues();
         valores.put(ID_BOVINO, id);
+        valores.put(FOTO, foto);
         valores.put(NOMBRE, nombre);
 		valores.put(FECHA, fecha);
 		valores.put(GENERO, genero);
@@ -63,19 +66,19 @@ public class DbManager_inventario {
 		return valores;
 	}
 	
-	public void inserta(String id, String nombre, String fecha, String genero, String proposito, String peso, String color, String raza, String id_padre, String id_madre){
+	public void inserta(String id, String foto, String nombre, String fecha, String genero, String proposito, String peso, String color, String raza, String id_padre, String id_madre){
         Log.i("pablo", "enra a guardar");
-        db.insert(TABLE_NAME, null, generarContentValues(id, nombre, fecha, genero, proposito, peso, color, raza, id_padre, id_madre));
+        db.insert(TABLE_NAME, null, generarContentValues(id, foto, nombre, fecha, genero, proposito, peso, color, raza, id_padre, id_madre));
 	}
 	
 	public Cursor cargarCursorRegistro(){
-		String[] columnas = new String[]{ID_BOVINO, NOMBRE, FECHA, GENERO, PROPOSITO, PESO, COLOR, RAZA, IDPADRE, IDMADRE};
+		String[] columnas = new String[]{ID_BOVINO, FOTO, NOMBRE, FECHA, GENERO, PROPOSITO, PESO, COLOR, RAZA, IDPADRE, IDMADRE};
 		return db.query(TABLE_NAME, columnas, null, null, null, null, null);
 	}
 
 	public List<InventarioVO> getRegistros() {
 		List<InventarioVO> listaRegistros = null;
-		String[] columnas = new String[]{ID_BOVINO, NOMBRE, FECHA, GENERO, PROPOSITO, PESO, COLOR, RAZA, IDPADRE, IDMADRE};
+		String[] columnas = new String[]{ID_BOVINO, FOTO, NOMBRE, FECHA, GENERO, PROPOSITO, PESO, COLOR, RAZA, IDPADRE, IDMADRE};
 		dbCursor = db.query(TABLE_NAME, columnas, null, null, null, null, null);
 		if (dbCursor.getCount() > 0) {
 			listaRegistros = new ArrayList<InventarioVO>();
@@ -83,15 +86,16 @@ public class DbManager_inventario {
 			while (!dbCursor.isAfterLast()) {
                 InventarioVO registro = new InventarioVO();
 				registro.setId((dbCursor.getString(0)));
-				registro.setNombre(dbCursor.getString(1));
-				registro.setFecha(dbCursor.getString(2));
-				registro.setGenero(dbCursor.getString(3));
-				registro.setProposito(dbCursor.getString(4));
-                registro.setPeso(dbCursor.getString(5));
-                registro.setColor(dbCursor.getString(6));
-                registro.setRaza(dbCursor.getString(7));
-                registro.setId_padre(dbCursor.getString(8));
-                registro.setId_madre(dbCursor.getString(9));
+                registro.setFoto((dbCursor.getString(1)));
+				registro.setNombre(dbCursor.getString(2));
+				registro.setFecha(dbCursor.getString(3));
+				registro.setGenero(dbCursor.getString(4));
+				registro.setProposito(dbCursor.getString(5));
+                registro.setPeso(dbCursor.getString(6));
+                registro.setColor(dbCursor.getString(7));
+                registro.setRaza(dbCursor.getString(8));
+                registro.setId_padre(dbCursor.getString(9));
+                registro.setId_madre(dbCursor.getString(10));
 
 				listaRegistros.add(registro);
 				dbCursor.moveToNext();

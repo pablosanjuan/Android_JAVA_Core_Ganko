@@ -3,11 +3,14 @@ package com.example.pablosanjuan.core;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,6 +28,7 @@ public class Splash extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
         prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        crear_folder();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -42,5 +46,19 @@ public class Splash extends ActionBarActivity {
         };
         Timer timer = new Timer();
         timer.schedule(task, SPLASH_SCREEN_DELAY);
+    }
+
+    private void crear_folder() {
+        File folder = new File(Environment.getExternalStorageDirectory() + "/ModBovino");
+        boolean success = true;
+        if (!folder.exists()) {
+//	        Toast.makeText(this, "carpeta creada", Toast.LENGTH_SHORT).show();
+            success = folder.mkdir();
+        }
+        if (success) {
+//	        Toast.makeText(this, "La carpeta ya esxiste", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "fallo al crear carpeta", Toast.LENGTH_SHORT).show();
+        }
     }
 }

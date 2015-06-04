@@ -51,18 +51,19 @@ public class IngresarBovino2 extends ActionBarActivity {
                 if (validar(e_peso.getText().toString(), e_color.getText().toString(), e_raza.getText().toString(), e_id_padre.getText().toString(), e_id_madre.getText().toString()) == false) {
                     Toast.makeText(this, "Debe Llenar Todos Los Campos", Toast.LENGTH_LONG).show();
                 } else {
-                    String var1 = bovino[0];
-                    String var2 = bovino[1];
-                    String var3 = bovino[2];
-                    String var4 = s_proposito.getSelectedItem().toString();
-                    String var5 = e_peso.getText().toString();
-                    String var6 = e_color.getText().toString();
-                    String var7 = e_raza.getText().toString();
-                    String var8 = e_id_padre.getText().toString();
-                    String var9 = e_id_madre.getText().toString();
-                    String var_genero = bovino[3];
+                    String var_id = bovino[0];
+                    String var_foto = bovino[1];
+                    String var_nombre = bovino[2];
+                    String var_fecha = bovino[3];
+                    String var_genero = bovino[4];
+                    String var_propo = s_proposito.getSelectedItem().toString();
+                    String var_peso = e_peso.getText().toString();
+                    String var_color = e_color.getText().toString();
+                    String var_raza = e_raza.getText().toString();
+                    String var_id_p = e_id_padre.getText().toString();
+                    String var_id_m = e_id_madre.getText().toString();
 
-                    manager0.inserta(var1, var2, var3, var_genero, var4, var5, var6, var7, var8, var9);
+                    manager0.inserta(var_id, var_foto, var_nombre, var_fecha, var_genero, var_propo, var_peso, var_color, var_raza, var_id_p, var_id_m);
                     Intent ir_main = new Intent().setClass(IngresarBovino2.this, Main.class);
                     startActivity(ir_main);
                     finish();
