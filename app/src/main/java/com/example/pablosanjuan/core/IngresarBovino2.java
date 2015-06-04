@@ -1,6 +1,7 @@
 package com.example.pablosanjuan.core;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -41,6 +42,13 @@ public class IngresarBovino2 extends ActionBarActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,proposito);
         s_proposito.setAdapter(adapter);
 
+        Typeface font = Typeface.createFromAsset(getAssets(), "Avgardn.ttf");
+        btn_guadar.setTypeface(font);
+        e_peso.setTypeface(font);
+        e_color.setTypeface(font);
+        e_raza.setTypeface(font);
+        e_id_padre.setTypeface(font);
+        e_id_madre.setTypeface(font);
 
     }
 

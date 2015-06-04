@@ -1,6 +1,7 @@
 package com.example.pablosanjuan.core;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import com.example.pablosanjuan.core.adapters.MyAdapter;
 import com.example.pablosanjuan.core.db.DbManager_inventario;
 import com.example.pablosanjuan.core.vo.InventarioVO;
@@ -23,12 +26,14 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     MyAdapter adapter;
     DbManager_inventario manager;
     private List<InventarioVO> listaRegistros;
+    private TextView txt_info;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment1, container, false);
 
+        txt_info = (TextView) rootView.findViewById(R.id.info_invemtario);
         manager = new DbManager_inventario(getActivity());
         lista = (ListView) rootView.findViewById(R.id.lista1);
         listaRegistros = manager.getRegistros();
@@ -38,6 +43,10 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
         b_borrar = (Button) rootView.findViewById(R.id.btn_borrar);
         btn_add_bovino.setOnClickListener(this);
         b_borrar.setOnClickListener(this);
+        Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "Avgardn.ttf");
+        btn_add_bovino.setTypeface(font);
+        b_borrar.setTypeface(font);
+        txt_info.setTypeface(font);
         return rootView;
     }
 

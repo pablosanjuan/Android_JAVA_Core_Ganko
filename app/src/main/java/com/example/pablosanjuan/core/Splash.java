@@ -3,11 +3,13 @@ package com.example.pablosanjuan.core;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -20,6 +22,7 @@ public class Splash extends ActionBarActivity {
 
     private static final long SPLASH_SCREEN_DELAY = 3000;
     private SharedPreferences prefs;
+    private TextView txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -28,6 +31,10 @@ public class Splash extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
         prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        txt = (TextView) findViewById(R.id.txt_splash);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "Avgardn.ttf");
+        txt.setTypeface(font);
         crear_folder();
         TimerTask task = new TimerTask() {
             @Override

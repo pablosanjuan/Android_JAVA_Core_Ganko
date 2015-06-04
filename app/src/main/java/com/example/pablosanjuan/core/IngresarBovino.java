@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.media.MediaScannerConnection;
 import android.media.MediaScannerConnection.MediaScannerConnectionClient;
 import android.net.Uri;
@@ -34,7 +35,7 @@ public class IngresarBovino extends ActionBarActivity implements View.OnClickLis
     int eleccion;
     private Calendar calendar;
     private int year, month, day;
-    private Button btn_fecha;
+    private Button btn_fecha, btn_sig;
     private ImageButton imgbtn;
     private String name2 = "";
     private String foto_rq;
@@ -49,6 +50,7 @@ public class IngresarBovino extends ActionBarActivity implements View.OnClickLis
         e_id = (EditText) findViewById(R.id.edt_id_bovino);
         e_nomb = (EditText) findViewById(R.id.edt_nombre_bovino);
         btn_fecha = (Button) findViewById(R.id.btn_fecha);
+        btn_sig = (Button) findViewById(R.id.btn_siguiente);
         rdgGrupo = (RadioGroup) findViewById(R.id.rdgGrupo);
         imgbtn = (ImageButton) findViewById(R.id.foto_bovino);
         imagen = Uri.parse("android.resource://com.example.pablosanjuan/core/drawable/add").toString();
@@ -59,6 +61,12 @@ public class IngresarBovino extends ActionBarActivity implements View.OnClickLis
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "Avgardn.ttf");
+        e_id.setTypeface(font);
+        e_nomb.setTypeface(font);
+        btn_fecha.setTypeface(font);
+        btn_sig.setTypeface(font);
     }
 
 
