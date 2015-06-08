@@ -26,5 +26,6 @@
     <string name="title_activity_registro">Registro</string>
     <string name="spinner_proposito">Proposito</string>
     <string name="title_activity_ingresar_bovino2">IngresarBovino2</string>
+    <string name="title_activity_ingresar_regr">IngresarRegr</string>
 
 </resources>

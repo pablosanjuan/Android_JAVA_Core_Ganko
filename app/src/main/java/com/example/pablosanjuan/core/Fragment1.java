@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.pablosanjuan.core.adapters.MyAdapter;
+import com.example.pablosanjuan.core.adapters.AdapterInventario;
 import com.example.pablosanjuan.core.db.DbManager_inventario;
 import com.example.pablosanjuan.core.vo.InventarioVO;
 import java.util.List;
@@ -23,7 +23,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
 
     private Button btn_add_bovino, b_borrar;
     ListView lista;
-    MyAdapter adapter;
+    AdapterInventario adapter;
     DbManager_inventario manager;
     private List<InventarioVO> listaRegistros;
     private TextView txt_info;
@@ -37,7 +37,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
         manager = new DbManager_inventario(getActivity());
         lista = (ListView) rootView.findViewById(R.id.lista1);
         listaRegistros = manager.getRegistros();
-        adapter = new MyAdapter(getActivity(), listaRegistros);
+        adapter = new AdapterInventario(getActivity(), listaRegistros);
         lista.setAdapter(adapter);
         btn_add_bovino = (Button) rootView.findViewById(R.id.btn_agregar_bovino);
         b_borrar = (Button) rootView.findViewById(R.id.btn_borrar);

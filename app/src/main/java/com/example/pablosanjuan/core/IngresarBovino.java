@@ -102,9 +102,6 @@ public class IngresarBovino extends ActionBarActivity implements View.OnClickLis
             case R.id.btn_fecha:
                 showDialog(999);
                 break;
-            case R.id.foto_bovino:
-
-                break;
         }
     }
 

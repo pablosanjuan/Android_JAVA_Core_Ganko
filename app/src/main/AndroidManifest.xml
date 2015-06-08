@@ -18,6 +18,7 @@
             android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -69,8 +70,29 @@
         <activity
             android:name=".IngresarBovino2"
             android:label="@string/title_activity_ingresar_bovino2"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
+        <activity
+            android:name=".IngresarRegReporductivo1"
+            android:screenOrientation="landscape"
+            android:label="@string/title_activity_ingresar_regr" >
+        </activity>
+        <activity
+            android:name=".IngresarRegReporductivo2"
+            android:screenOrientation="landscape"
+            android:label="@string/title_activity_ingresar_regr" >
+        </activity>
+        <activity
+            android:name=".IngresarRegReporductivo3"
+            android:screenOrientation="landscape"
+            android:label="@string/title_activity_ingresar_regr" >
+        </activity>
+        <activity
+            android:name=".IngresarRegReporductivo4"
+            android:screenOrientation="landscape"
+            android:label="@string/title_activity_ingresar_regr" >
+        </activity>
+
     </application>
 
 </manifest>

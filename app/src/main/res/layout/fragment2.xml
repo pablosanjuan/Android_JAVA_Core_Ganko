@@ -8,16 +8,36 @@
     android:orientation="vertical"
     tools:context="com.example.pablosanjuan.core.Fragment1$PlaceholderFragment">
 
-    <TextView android:text="lista de usuarios" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
+    <TextView
+        android:textSize="30dp"
+        android:id="@+id/info_reproductivo"
+        android:gravity="center"
+        android:text="Registro Reproductivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <Button
-            android:id="@+id/btn_borrar2"
+            android:layout_margin="5px"
+            android:background="#e67e22"
+            android:id="@+id/btn_add_reg_reproductivo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar"/>
+        <Button
+            android:layout_margin="5px"
+            android:background="#f1c40f"
+            android:id="@+id/btn_borrar_reg_repro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Borrar Lista"/>
+    </LinearLayout>
         <ListView
-            android:id="@+id/list2a"
+            android:id="@+id/lista_frag2"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </ListView>

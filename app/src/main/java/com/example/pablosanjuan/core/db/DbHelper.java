@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbHelper extends SQLiteOpenHelper{
 
-	private static final String DB_NAME = "dbbov.sqlite";
+	private static final String DB_NAME = "dbbovi.sqlite";
 	private static final int DB_VERSION = 1;
 	
 	public DbHelper(Context context) {
@@ -17,6 +17,7 @@ public class DbHelper extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
         db.execSQL(DbManager_inventario.CREATE_TABLE);
         db.execSQL(DbManager_usuario.CREATE_TABLE);
+        db.execSQL(DbManagerRegReproductivo.CREATE_TABLE);
 	}
 
 	@Override
