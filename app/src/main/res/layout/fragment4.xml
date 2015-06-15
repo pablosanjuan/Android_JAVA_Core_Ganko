@@ -7,7 +7,21 @@
     android:background="#ecf0f1"
     tools:context="com.example.pablosanjuan.core.Fragment4">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewPlanVacunas"/>
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/fabPlanVacu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="9dp"
+        android:src="@android:drawable/ic_menu_add"
+        />
+
 
 </RelativeLayout>

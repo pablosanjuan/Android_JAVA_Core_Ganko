@@ -27,5 +27,11 @@
     <string name="spinner_proposito">Proposito</string>
     <string name="title_activity_ingresar_bovino2">IngresarBovino2</string>
     <string name="title_activity_ingresar_regr">IngresarRegr</string>
-
+    <string name="title_activity_registrar_vacuna1">RegistrarVacuna1</string>
+    <string name="title_activity_registrar_vacuna2">RegistrarVacuna2</string>
+    <string name="title_activity_detalle__plan_vacunacion">Detalle_PlanVacunacion</string>
+    <string name="title_activity_ingresar_control">IngresarControl</string>
+    <string name="title_activity_ingresar_control2">IngresarControl2</string>
+    <string name="title_activity_ingresar_manejo">IngresarManejo</string>
+    <string name="title_activity_ingresar_manejo2">IngresarManejo2</string>
 </resources>

@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbHelper extends SQLiteOpenHelper{
 
-	private static final String DB_NAME = "dbbovi.sqlite";
+	private static final String DB_NAME = "dbbovi2.sqlite";
 	private static final int DB_VERSION = 1;
 	
 	public DbHelper(Context context) {
@@ -18,6 +18,13 @@ public class DbHelper extends SQLiteOpenHelper{
         db.execSQL(DbManager_inventario.CREATE_TABLE);
         db.execSQL(DbManager_usuario.CREATE_TABLE);
         db.execSQL(DbManagerRegReproductivo.CREATE_TABLE);
+		db.execSQL(DbManager_vacunas.CREATE_TABLE);
+		db.execSQL(DbManager_control.CREATE_TABLE);
+
+		db.execSQL(DbManager_manejo.CREATE_TABLE);
+        db.execSQL(DbLecheD.CREATE_TABLE);
+        db.execSQL(DbLeche.CREATE_TABLE);
+        db.execSQL(DbCeba.CREATE_TABLE);
 	}
 
 	@Override

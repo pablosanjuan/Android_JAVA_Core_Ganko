@@ -53,26 +53,34 @@ public class Main extends ActionBarActivity implements NavigationDrawerFragment.
                 mTitle = getString(R.string.title_section3);
                 break;
             case 3:
+                fragment = new MenuLeche();
+                mTitle = "";
+                break;
+            case 4:
+                fragment = new MenuCeba();
+                mTitle = "";
+                break;
+            case 5:
                 fragment = new Fragment4();
                 mTitle = getString(R.string.title_section4);
                 break;
-            case 4:
+            case 6:
                 fragment = new Fragment5();
                 mTitle = getString(R.string.title_section5);
                 break;
-            case 5:
-                fragment = new Fragment5();
+            case 7:
+                fragment = new Fragment6();
                 mTitle = getString(R.string.title_section6);
                 break;
-            case 6:
+            case 8:
                 fragment = new Fragment3();
                 mTitle = getString(R.string.title_section7);
                 break;
-            case 7:
+            case 9:
                 fragment = new Fragment1();
                 mTitle = getString(R.string.title_section8);
                 break;
-            case 8:
+            case 10:
                 SharedPreferences preferencias=getSharedPreferences("datos",Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor=preferencias.edit();
                 editor.putBoolean("validar_sesion", false);

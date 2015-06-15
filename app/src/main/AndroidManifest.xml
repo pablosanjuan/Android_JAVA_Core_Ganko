@@ -92,6 +92,57 @@
             android:screenOrientation="landscape"
             android:label="@string/title_activity_ingresar_regr" >
         </activity>
+        <activity
+            android:name=".RegistrarVacuna1"
+            android:label="@string/title_activity_registrar_vacuna1"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".RegistrarVacuna2"
+            android:label="@string/title_activity_registrar_vacuna2"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".Detalle_PlanVacunacion"
+            android:label="@string/title_activity_detalle__plan_vacunacion"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity
+            android:name=".IngresarControl"
+            android:label="@string/title_activity_ingresar_control"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity
+            android:name=".IngresarControl2"
+            android:label="@string/title_activity_ingresar_control2"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity
+            android:name=".IngresarManejo"
+            android:label="@string/title_activity_ingresar_manejo"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity
+            android:name=".IngresarManejo2"
+            android:label="@string/title_activity_ingresar_manejo2"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity
+            android:name=".IngresarLecheD"
+            android:screenOrientation="landscape"
+            android:label="LecheD" >
+        </activity>
+        <activity
+            android:name=".IngresarLeche"
+            android:screenOrientation="landscape"
+            android:label="Leche" >
+        </activity>
+        <activity
+            android:name=".IngresarCeba"
+            android:screenOrientation="landscape"
+            android:label="Ceba" >
+        </activity>
 
     </application>
 

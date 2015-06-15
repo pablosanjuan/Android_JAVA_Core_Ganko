@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_preñez"
-            android:hint="DD/MM/AAAA"
+            android:hint="DD/MM/AAAA - Preñez"
             android:gravity="left|center_vertical"
             style="@style/Base.Widget.AppCompat.ActionButton.Overflow"/>
         <Button
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_fecha_posible_parto"
-            android:hint="DD/MM/AAAA"
+            android:hint="DD/MM/AAAA - Fecha Posible Parto"
             android:gravity="left|center_vertical"
             style="@style/Base.Widget.AppCompat.ActionButton.Overflow"/>
     </LinearLayout>
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_parto"
-            android:hint="DD/MM/AAAA"
+            android:hint="DD/MM/AAAA - Fecha Parto"
             android:gravity="left|center_vertical"
             style="@style/Base.Widget.AppCompat.ActionButton.Overflow"/>
         <Spinner
